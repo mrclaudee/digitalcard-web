@@ -1,1 +1,128 @@
-<p>profil works!</p>
+<body>
+    <header>
+        <mat-toolbar style="background-color: #ffffff; height:15%">
+
+            <mat-toolbar-row style="background-color: #b51621; height:40px">
+                <span style="flex: 1 1 auto;"></span>
+                <span style="padding-right: 8%; color: #ffffff;">Mon profil</span>
+            </mat-toolbar-row>
+
+            <mat-toolbar-row class="justify">
+                <span>
+                    <img src="/assets/img/logo-ul.png" style="height: 90px;" alt="logo de l'université de limoges">
+                </span>
+                <span style="flex: 1 1 auto;"></span>
+                <span style="padding-bottom: 2%;">
+                    <button mat-raised-button style="background-color: #b51621; color:#ffffff;">Se deconnecter</button>
+                </span>
+            </mat-toolbar-row>
+        </mat-toolbar>
+        <mat-divider></mat-divider>
+    </header>
+
+    <div class="container">
+        <p> Ici vous pouvez modifier les informations relatives à votre compte <br> <br></p>
+        <p style="font-size: 18px;">Modifier mes informations personnelles</p>
+
+        <form>
+            <table style="width:100%" cellspacing="0">
+                <tr>
+                    <td>
+                        <mat-form-field style="width: 95%;" appearance="outline">
+                            <mat-label>Nom</mat-label>
+                            <input matInput placeholder="  " type="text">
+                        </mat-form-field>
+                    </td>
+                    <td>
+                        <mat-form-field style="width: 95%;" appearance="outline">
+                            <mat-label>Prénom</mat-label>
+                            <input matInput placeholder="  " type="text">
+                        </mat-form-field>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <mat-form-field style="width: 95%;" appearance="outline">
+                            <mat-label>Email</mat-label>
+                            <input matInput placeholder="  " type="email" [formControl]="email" required>
+                            @if (email . invalid) {
+                                <mat-error>{{ getErrorMessage() }}</mat-error>
+                                }
+                        </mat-form-field>
+                    </td>
+                    <td>
+                        <mat-form-field style="width: 95%;" appearance="outline">
+                            <mat-label>Confirmation de votre Email</mat-label>
+                            <input matInput placeholder="  " type="email" [formControl]="email" required>
+                            @if (email . invalid) {
+                                <mat-error>Les e-mail doivent correspondre</mat-error>
+                                }
+                        </mat-form-field>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span style="align:left;">
+                            <button mat-raised-button
+                                style="background-color: #b51621; color:#ffffff; width:95%; height:50px; align:center">Modifier
+                                mes informations personnelles</button>
+                        </span>
+                    </td>
+                    <td></td>
+                </tr>
+                <br><br>
+                <p style="font-size: 18px;">Modifier mon mot de passe </p>
+
+                <tr>
+                    <td>
+                        <mat-form-field style="width: 95%;" appearance="outline">
+                            <mat-label>Mot de passe actuel</mat-label>
+                            <input matInput placeholder="  " [type]="hide ? 'password' : 'text'">
+                            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                                [attr.aria-pressed]="hide">
+                                <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+                            </button>
+                        </mat-form-field>
+                    </td>
+                    <td>
+                        <mat-form-field style="width: 95%;" appearance="outline">
+                            <mat-label>Nouveau mot de passe</mat-label>
+                            <input matInput placeholder="  " [type]="hide1 ? 'password' : 'text'">
+                            <button mat-icon-button matSuffix (click)="hide1 = !hide1"
+                                [attr.aria-label]="'Hide1 password'" [attr.aria-pressed]="hide1">
+                                <mat-icon>{{ hide1 ? 'visibility_off' : 'visibility' }}</mat-icon>
+                            </button>
+                        </mat-form-field>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <mat-form-field style="width: 95%;" appearance="outline">
+                            <mat-label> Confirmation de nouveau mot de passe </mat-label>
+                            <input matInput placeholder="  " [type]="hide2 ? 'password' : 'text'">
+                            <button mat-icon-button matSuffix (click)="hide2 = !hide2"
+                                [attr.aria-label]="'Hide2 password'" [attr.aria-pressed]="hide2">
+                                <mat-icon>{{ hide2 ? 'visibility_off' : 'visibility' }}</mat-icon>
+                            </button>
+                        </mat-form-field>
+                    </td>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <span style="align:left;">
+                            <button mat-raised-button
+                                style="background-color: #b51621; color:#ffffff; width:95%; height:50px; align:center">Modifier
+                                mon mot de passe</button>
+                        </span>
+                    </td>
+                    <td></td>
+                </tr>
+
+            </table>
+        </form>
+    </div>
+</body>
