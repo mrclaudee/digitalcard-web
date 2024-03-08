@@ -1,0 +1,70 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    display: block;
+    margin-top: 40px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    font-weight: 400;
+    font-family: 'Roboto', Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.4285743;
+    color: #4b575f;
+    background-color: #ffffff;
+    margin: 0;    
+}
+
+.justify {
+    padding-left: 10%;
+    padding-right: 10%;
+    margin-top: 2%;
+    height: 25%; 
+    margin-bottom: 1%;   
+}
+
+/* Centrer la carte de connexion */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Assurez-vous que la hauteur de la vue soit couverte */
+}
+
+.containerc {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 75%;
+}
+.containercard {
+
+    //max-width: 80%; /* Définir une largeur maximale */
+    width: 38%;
+    border-radius: 10px;
+    padding: 20px; /* Espacement intérieur */
+    margin: 0 auto; /* Centrer la carte horizontalement */
+    background-color: rgba(255, 255, 255, 0.587); /* Définir la couleur de fond avec une transparence (ici, 0.5 pour 50% de transparence) */
+
+}
+
+
+
+mat-form-field input {
+    width: 100%;
+}
+
+
+
+
+.content {
+    width: 100%; /* Largeur de la carte de connexion */
+    height: 100%;
+    background-image: url('/assets/img/imageuniv.png'); /* Remplacez 'chemin/vers/votre/image.jpg' par le chemin réel de votre image */
+    background-size: cover; /* Assurez-vous que l'image de fond couvre tout le contenu */
+    background-position: center; /* Centrez l'image de fond */
+    background-repeat: no-repeat; /* Assurez-vous que l'image de fond ne se répète pas */
+}
+
+
