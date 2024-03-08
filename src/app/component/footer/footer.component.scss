@@ -1,0 +1,52 @@
+* {
+  box-sizing: border-box;
+}
+.justify {
+  padding-left: 10%;
+  padding-right: 10%;
+  margin-top: 2%;
+  height: 20%;
+  margin-bottom: 1%;
+}
+.foot {
+  padding-left: 10%;
+  padding-right: 10%;
+  text-align: center;
+}
+
+.container {
+  margin-bottom: 5%;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+.bg-primary,
+.brand-primary {
+  background-color: #b51621;
+  fill: #b51621;
+}
+
+.mat-card {
+  width: 500px; /* Largeur de 300 pixels */
+  // padding: 20px;
+  flex-direction: column;
+}
+
+.mat-card-title {
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mat-card-title h2{
+  margin: 0;
+}
+.primary-btn{
+  background-color: #b51621;
+  border-color: transparent;
+  cursor: pointer;
+}
