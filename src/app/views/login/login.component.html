@@ -1,1 +1,58 @@
-<p>login works!</p>
+<body>
+    <header>
+        <mat-toolbar style="background-color: #ffffff; height:15%">
+
+            <mat-toolbar-row style="background-color: #b51621; height:40px">
+                <span style="flex: 1 1 auto;"></span>
+                <span style="padding-right: 8%; color: #ffffff;">Mon profil</span>
+            </mat-toolbar-row>
+
+            <mat-toolbar-row class="justify">
+                <span>
+                    <img src="/assets/img/logo-ul.png" style="height: 90px;" alt="logo de l'université de limoges">
+                </span>
+                <span style="flex: 1 1 auto;"></span>
+                <span style="padding-bottom: 2%;">
+                    <button mat-raised-button style="background-color: #b51621; color:#ffffff;">J'ai besoin d'aide</button>
+                </span>
+            </mat-toolbar-row>
+        </mat-toolbar>
+        <mat-divider></mat-divider>
+    </header>
+    
+    <div class="content">
+     
+        <div class="containerc">
+            <mat-card class="containercard">
+                <mat-card-content></mat-card-content>
+                   <div style="display: flex; flex-direction: column;margin-top: -30px;">
+                    <mat-form-field>
+                        
+                        <div style="margin-bottom: 5px;">
+                            <label >Email</label><br>
+                        </div>
+
+                    <input matInput>
+                  </mat-form-field>
+        
+                  <mat-form-field>
+                    <div  style="display:flex ; flex-direction: row; justify-content: space-between;margin-bottom: 5px;"> 
+                    
+                        <label>Password</label><br>
+                        <span><a href="#" style="color: black;">Mot de passe oublié ?</a></span> <!-- Ajoutez ce lien -->
+
+                    </div>
+                    <input matInput>
+        
+                  </mat-form-field>
+
+
+                   </div>
+                  <button mat-raised-button style="background-color: #b51621; color:#ffffff;">Se connecter</button>
+            </mat-card>
+        </div>
+    
+</div> 
+      
+    </body>
+
