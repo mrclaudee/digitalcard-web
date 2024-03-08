@@ -1,0 +1,29 @@
+<header>
+  <mat-toolbar style="background-color: #ffffff; height: 15%">
+    <mat-toolbar-row style="background-color: #b51621; height: 40px">
+      <span style="flex: 1 1 auto"></span>
+      <button (click)="changePage('/profil')" class="primary-btn" style="padding-right: 8%; color: #ffffff"> Mon profil</button>
+    </mat-toolbar-row>
+
+    <mat-toolbar-row class="justify">
+      <span (click)="changePage('/home')">
+        <img
+          src="/assets/img/logo-ul.png"
+          style="height: 60px"
+          alt="Université de limoges"
+        />
+      </span>
+      <span style="flex: 1 1 auto"></span>
+      <span style="padding-bottom: 2%">
+        <button
+          mat-raised-button
+          style="background-color: #b51621; color: #ffffff"
+          (click)="changePage('/login')"
+        >
+          Se deconnecter
+        </button>
+      </span>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <mat-divider></mat-divider>
+</header>

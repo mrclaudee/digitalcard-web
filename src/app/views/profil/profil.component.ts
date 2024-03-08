@@ -7,6 +7,8 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {FormControl, Validators, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
+import { HeaderComponent } from '../../component/header/header.component';
+import { FooterComponent } from '../../component/footer/footer.component';
 
 @Component({
   selector: 'app-profil',
@@ -15,11 +17,13 @@ import {MatInputModule} from '@angular/material/input';
     MatToolbarModule,
     MatDividerModule,
     MatIconModule,
-    MatButtonModule,    
+    MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HeaderComponent,
+    FooterComponent
   ],
   templateUrl: './profil.component.html',
   styleUrl: './profil.component.scss'
