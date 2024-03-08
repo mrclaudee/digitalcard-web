@@ -21,34 +21,41 @@
     </header>
 
     <div class="container justify">
-        
-        <p>Salut {{ nom }}</p> 
+
+        <p>Salut {{ nom }}</p>
         <div class="row" style="display: flex; flexwrap:wrap;">
             <div class="card">
                 <mat-card style="width: 350px;">
                     <mat-card-header>
-                      <mat-card-title style="justify-content: space-between; ">
-                        <p><b>{{ uniterecherche }}  </b>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FR</p></mat-card-title>
-                      <mat-card-subtitle><p>{{defunit}}</p></mat-card-subtitle>
+                        <mat-card-title style="justify-content: space-between; ">
+                            <p><b>{{ uniterecherche }} </b>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FR
+                            </p>
+                        </mat-card-title>
+                        <mat-card-subtitle>
+                            <p>{{ defunit }}</p>
+                        </mat-card-subtitle>
                     </mat-card-header>
                     <mat-card-content>
-                      <p>{{ profession1 }} <br> {{ profession2 }}</p>
-                      <p>Partagez cette carte avec:</p>
+                        <p>{{ profession1 }} <br> {{ profession2 }}</p>
+                        <p>Partagez cette carte avec:</p>
                     </mat-card-content>
-                    <mat-card-actions style="justify-content: space-between; ">                        
-                        <button mat-raised-button style="background-color: #b51621; color:#ffffff;">QR Code de Contact</button>
-                        <button mat-raised-button style="background-color: #b51621; color:#ffffff;">QR Code de Profil</button>
+                    <mat-card-actions style="justify-content: space-between; ">
+                        <button mat-raised-button style="background-color: #b51621; color:#ffffff;">QR Code de
+                            Contact</button>
+                        <button mat-raised-button style="background-color: #b51621; color:#ffffff;">QR Code de
+                            Profil</button>
                     </mat-card-actions>
                     <mat-card-actions>
                         <button mat-button>Modifier|</button>
                         <button mat-button style="color: #b51621;">supprimer</button>
-                      </mat-card-actions>
-                  </mat-card>
-                  
+                    </mat-card-actions>
+                </mat-card>
+
             </div>
-            
+
         </div>
-        
+
     </div>
 
 
@@ -60,7 +67,8 @@
                 <table style="width: 100%;">
                     <tr>
                         <td style="width: 25%;"><img src="/assets/img/logo-ul.png" style="height: 60px;"
-                                alt="logo de l'université de limoges"></td>
+                                alt="logo de l'université de limoges">
+                        </td>
                         <td style="width: 25%;">
                             <address>
                                 33 rue François Mitterrand<br>
@@ -72,7 +80,7 @@
                         <td style="width: 25%;">
                             <p>université ouverte</p>
                             <div class="barre" style="display: inline;">
-                                <div class="ul-element-logo-signal"
+                                <div
                                     style="display: inline-block; position: relative; width: 50px; margin-top: 0px; padding-bottom: 11.9284%; vertical-align: top;">
                                     <svg preserveAspectRatio="xMinYMin meet" viewBox="0 0 503 60"
                                         style="display: block; position: absolute; top: 0; left: 0; width: 100%; max-width: 100%; height: 100%">
@@ -101,7 +109,7 @@
                             <div class="example-button-row">
                                 <div class="example-flex-container">
                                     <a href="https://www.facebook.com/unilim">
-                                    <button mat-icon-button aria-label="facebook">                                        
+                                        <button mat-icon-button aria-label="facebook">
                                             <svg width="236px" height="236px" viewBox="0 -0.5 25 25" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
                                                 <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -112,13 +120,12 @@
                                                         d="M11.75 19C11.75 19.4142 12.0858 19.75 12.5 19.75C12.9142 19.75 13.25 19.4142 13.25 19H11.75ZM13.25 11C13.25 10.5858 12.9142 10.25 12.5 10.25C12.0858 10.25 11.75 10.5858 11.75 11H13.25ZM15.5 5.75C15.9142 5.75 16.25 5.41421 16.25 5C16.25 4.58579 15.9142 4.25 15.5 4.25V5.75ZM12.5 8H11.75H12.5ZM11.75 11C11.75 11.4142 12.0858 11.75 12.5 11.75C12.9142 11.75 13.25 11.4142 13.25 11H11.75ZM12.5 10.25C12.0858 10.25 11.75 10.5858 11.75 11C11.75 11.4142 12.0858 11.75 12.5 11.75V10.25ZM14.5 11.75C14.9142 11.75 15.25 11.4142 15.25 11C15.25 10.5858 14.9142 10.25 14.5 10.25V11.75ZM12.5 11.75C12.9142 11.75 13.25 11.4142 13.25 11C13.25 10.5858 12.9142 10.25 12.5 10.25V11.75ZM10.5 10.25C10.0858 10.25 9.75 10.5858 9.75 11C9.75 11.4142 10.0858 11.75 10.5 11.75V10.25ZM13.25 19V11H11.75V19H13.25ZM15.5 4.25C13.4289 4.25 11.75 5.92893 11.75 8H13.25C13.25 6.75736 14.2574 5.75 15.5 5.75V4.25ZM11.75 8V11H13.25V8H11.75ZM12.5 11.75H14.5V10.25H12.5V11.75ZM12.5 10.25H10.5V11.75H12.5V10.25Z"
                                                         fill="#ffffff"></path>
                                                 </g>
-                                            </svg>                                        
-                                    </button>
-                                </a>
+                                            </svg>
+                                        </button>
+                                    </a>
 
                                     <button mat-icon-button aria-label="X">
-                                        <a target="_blank" href="https://twitter.com/unilim"
-                                            style="line-height:0.8;">
+                                        <a target="_blank" href="https://twitter.com/unilim" style="line-height:0.8;">
                                             <svg xmlns="http://www.w3.org/2000/svg" stroke="#4b575f" fill="#4b575f"
                                                 viewBox="0 0 300 271" style="height:16.8px;">
                                                 <path
@@ -233,9 +240,11 @@
                     </tr>
                 </table>
             </mat-toolbar-row>
-            <mat-toolbar-row style="background-color: #4b575f; height:40px;" >
-                <span style="padding-right: 8%; color: #ffffff;"><p class="foot">Tout droits réservés Université de
-                    Limoges</p></span>
+            <mat-toolbar-row style="background-color: #4b575f; height:40px;">
+                <span style="padding-right: 8%; color: #ffffff;">
+                    <p class="foot">Tout droits réservés Université de
+                        Limoges</p>
+                </span>
             </mat-toolbar-row>
         </mat-toolbar>
     </footer>
