@@ -1,45 +1,58 @@
 <body>
-    <app-header></app-header>
+  <app-header></app-header>
 
-    <div class="content">
-     
-        <div class="containerc">
-            <mat-card class="containercard">
-                <mat-card-content></mat-card-content>
-                   <div style="display: flex; flex-direction: column;margin-top: -30px;">
-                    <mat-form-field>
-                        
-                        <div style="margin-bottom: 5px;">
-                            <label >Email</label><br>
-                        </div>
+  <div class="content">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="containerc">
+        <mat-card class="containercard">
+          <mat-card-content></mat-card-content>
+          <div style="display: flex; flex-direction: column; margin-top: -30px">
+            <mat-form-field>
+              <div style="margin-bottom: 5px">
+                <label for="email">Email</label><br />
+              </div>
 
-                    <input matInput>
-                  </mat-form-field>
-        
-                  <mat-form-field>
-                    <div  style="display:flex ; flex-direction: row; justify-content: space-between;margin-bottom: 5px;"> 
-                    
-                        <label>Password</label><br>
-                        <span><a href="#" style="color: black;">Mot de passe oublié ?</a></span> <!-- Ajoutez ce lien -->
+              <input formControlName="email" id="email"  />
+              <div *ngIf="loginForm.controls['email'].errors?.['required']" style="color: red;">
+                Ce champ est obligatoire
+            </div>
+            </mat-form-field>
 
-                    </div>
-                    <input matInput>
-        
-                  </mat-form-field>
-
-
-                   </div>
-                  <button mat-raised-button style="background-color: #b51621; color:#ffffff;">Se connecter</button>
-            </mat-card>
-        </div>
-    
-</div> 
-<div style="background-color: black;">
+            <mat-form-field>
+              <div
+                style="
+                  display: flex;
+                  flex-direction: row;
+                  justify-content: space-between;
+                  margin-bottom: 5px;
+                "
+              >
+                <label for="password">Password</label><br />
+                <span
+                  ><a href="#" style="color: black"
+                    >Mot de passe oublié ?</a
+                  ></span
+                >
+                <!-- Ajoutez ce lien -->
+              </div>
+              <input FormControlName = "password" id="password" type="password" />
+              <div *ngIf="loginForm.controls['password'].errors?.['required']" style="color: red;">
+                Ce champ est obligatoire
+            </div>
+            </mat-form-field>
+          </div>
+          <button
+            mat-raised-button
+            style="background-color: #b51621; color: #ffffff"
+            type="submit"
+          >
+            Se connecter
+          </button>
+        </mat-card>
+      </div>
+    </form>
+  </div>
+  <div style="background-color: black">
     <app-footer></app-footer>
-</div>      
-
-  </body>
-  
- 
-   
- 
+  </div>
+</body>
