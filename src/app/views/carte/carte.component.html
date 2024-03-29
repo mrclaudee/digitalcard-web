@@ -16,7 +16,7 @@
               vertical-align: top;
             "
           >
-            <svg
+            <svg 
               preserveAspectRatio="xMinYMin meet"
               viewBox="0 0 503 60"
               style="
@@ -37,8 +37,8 @@
                   width="142px"
                   height="60"
                   rx="6"
-                  class="bg-primary"
-                ></rect>
+                  [attr.fill] = "ColorConstante"
+                  ></rect>
                 <rect
                   opacity="0.5"
                   x="106"
@@ -46,8 +46,8 @@
                   width="119px"
                   height="60"
                   rx="6"
-                  class="bg-primary"
-                ></rect>
+                  [attr.fill] = "ColorConstante"
+                  ></rect>
                 <rect
                   opacity="0.6"
                   x="207"
@@ -55,8 +55,8 @@
                   width="84px"
                   height="60"
                   rx="6"
-                  class="bg-primary"
-                ></rect>
+                  [attr.fill] = "ColorConstante"
+                  ></rect>
                 <rect
                   opacity="0.7"
                   x="308"
@@ -64,8 +64,8 @@
                   width="61px"
                   height="60"
                   rx="6"
-                  class="bg-primary"
-                ></rect>
+                  [attr.fill] = "ColorConstante"
+                  ></rect>
                 <rect
                   opacity="0.8"
                   x="390"
@@ -73,24 +73,24 @@
                   width="29px"
                   height="60"
                   rx="6"
-                  class="bg-primary"
-                ></rect>
+                  [attr.fill] = "ColorConstante"
+                  ></rect>
                 <rect
                   x="446"
                   y="0"
                   width="15px"
                   height="60"
                   rx="4"
-                  class="bg-primary"
-                ></rect>
+                  [attr.fill] = "ColorConstante"
+                  ></rect>
                 <rect
                   x="495"
                   y="0"
                   width="8px"
                   height="60"
                   rx="2"
-                  class="bg-primary"
-                ></rect>
+                [attr.fill] = "ColorConstante"
+                  ></rect>
               </g>
             </svg>
           </div>
@@ -214,7 +214,7 @@
     <br>
     <br>
     <br>
-    <div style="background-color: #e85412; height: 19%; top: 10%;"> 
+    <div style=" height: 19%; top: 10%;" [ngStyle]  = "{'background-color' : ColorConstante}"  >  
        
 
         <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: center;">

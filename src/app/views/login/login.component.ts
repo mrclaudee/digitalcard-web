@@ -17,7 +17,9 @@ import {MatButton} from '@angular/material/button';
     MatToolbarModule,
     MatCardModule,
     MatFormFieldModule,
-    MatButton,HeaderComponent,FooterComponent
+    MatButton,
+    HeaderComponent,
+    FooterComponent
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
