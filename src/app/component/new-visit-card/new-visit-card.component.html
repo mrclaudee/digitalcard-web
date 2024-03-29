@@ -1,97 +1,98 @@
 <h1 mat-dialog-title><b>Ajouter une nouvelle carte de visite</b></h1>
 <mat-dialog-content>
-  <form class="example-form">
+  <form class="example-form" [formGroup]="cardForm" (ngSubmit)="onSubmit()">
     <mat-form-field>
-      <mat-label>Unite de recherche</mat-label>
-      <mat-select [formControl]="unitFormControl">
+      <mat-label for="unitFormControl">Unite de recherche</mat-label>
+      <mat-select formControlName="unitFormControl" id="unitFormControl">
         <mat-option> -- None --</mat-option>
-        <mat-option value="0"
-          >Neuroepidemiologie tropicale et compare</mat-option
-        >
+        <mat-option value="0">Neuroepidemiologie tropicale et compare</mat-option>
         <mat-option value="1">Bacteriologie</mat-option>
         <mat-option value="2">Medecine</mat-option>
       </mat-select>
-      @if (unitFormControl.hasError('required')) {
+      @if (f['unitFormControl'].hasError('required')) {
       <mat-error>L'unite de recherche <strong>est requise</strong></mat-error>
       }
     </mat-form-field>
-
+    
     <mat-form-field class="example-full-width">
-      <mat-label>Fonction</mat-label>
-      <input matInput [formControl]="functionFormControl" />
-      @if (functionFormControl.hasError('required')) {
+      <mat-label for="functionFormControl">Fonction</mat-label>
+      <input matInput formControlName="functionFormControl" id="functionFormControl" />
+      @if (f['functionFormControl'].hasError('required')) {
       <mat-error>La fonction <strong>est requise</strong></mat-error>
       }
     </mat-form-field>
 
     <div class="row">
       <mat-form-field class="example-full-width">
-        <mat-label>Mobile </mat-label>
-        <input matInput [formControl]="mobileFormControl" />
+        <mat-label for="mobileFormControl">Mobile </mat-label>
+        <input matInput formControlName="mobileFormControl" id="mobileFormControl" />
         <!-- <mat-hint>Sous texte</mat-hint> -->
         <!-- @if (emailFormControl.hasError('email') && !emailFormControl.hasError('required')) {
           <mat-error>Veuillez entrer un mail valide</mat-error>
         } -->
-        @if (mobileFormControl.hasError('required')) {
+        @if (f['mobileFormControl'].hasError('required')) {
         <mat-error>Le mobile <strong>est requis</strong></mat-error>
         }
       </mat-form-field>
       <mat-form-field class="example-full-width">
-        <mat-label>Fixe</mat-label>
-        <input matInput [formControl]="fixeFormControl" />
-        @if (fixeFormControl.hasError('required')) {
+        <mat-label for="fixeFormControl">Fixe</mat-label>
+        <input matInput formControlName="fixeFormControl" id="fixeFormControl" />
+        @if (f['fixeFormControl'].hasError('required')) {
         <mat-error>Le fixe <strong>est requis</strong></mat-error>
         }
       </mat-form-field>
     </div>
 
     <mat-form-field class="example-full-width">
-      <mat-label>Addresse</mat-label>
-      <input matInput [formControl]="addressFormControl" />
-      @if (addressFormControl.hasError('required')) {
+      <mat-label for="addressFormControl">Addresse</mat-label>
+      <input matInput formControlName="addressFormControl" id="addressFormControl" />
+      @if (f['addressFormControl'].hasError('required')) {
       <mat-error>Le fixe <strong>est requis</strong></mat-error>
       }
     </mat-form-field>
 
     <div class="row">
       <mat-form-field class="example-full-width">
-        <mat-label>Code postal</mat-label>
-        <input matInput [formControl]="postalFormControl" />
-        @if (postalFormControl.hasError('required')) {
+        <mat-label for="postalFormControl">Code postal</mat-label>
+        <input matInput formControlName="postalFormControl" id="postalFormControl"/>
+        @if (f['postalFormControl'].hasError('required')) {
         <mat-error>Le fixe <strong>est requis</strong></mat-error>
         }
       </mat-form-field>
       <mat-form-field class="example-full-width">
-        <mat-label>Ville</mat-label>
-        <input matInput [formControl]="townFormControl" />
-        @if (townFormControl.hasError('required')) {
+        <mat-label for="townFormControl">Ville</mat-label>
+        <input matInput formControlName="townFormControl" id="townFormControl"/>
+        @if (f['townFormControl'].hasError('required')) {
         <mat-error>Le fixe <strong>est requis</strong></mat-error>
         }
       </mat-form-field>
     </div>
 
     <mat-form-field class="example-full-width">
-      <mat-label>Logo</mat-label>
-      <input matInput />
+      <mat-label for="logo">Logo</mat-label>
+      <input matInput id="logo" />
     </mat-form-field>
 
     <mat-form-field class="">
-      <mat-label>Desription</mat-label>
+      <mat-label for="desc">Desription</mat-label>
       <textarea
         matInput
         placeholder="Ex. It makes me feel..."
         rows="5"
+        id="desc"
       ></textarea>
     </mat-form-field>
+
+    <mat-dialog-actions>
+      <button
+        mat-raised-button
+        cdkFocusInitial
+        type="submit"
+        style="background-color: #b51621; color: #ffffff; width: 100%"
+      >
+        Ajouter la carte
+      </button>
+    </mat-dialog-actions>
   </form>
 </mat-dialog-content>
-<mat-dialog-actions>
-  <button
-    mat-raised-button
-    mat-dialog-close
-    cdkFocusInitial
-    style="background-color: #b51621; color: #ffffff; width: 100%"
-  >
-    Ajouter la carte
-  </button>
-</mat-dialog-actions>
+

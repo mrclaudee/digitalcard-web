@@ -10,6 +10,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { HeaderComponent } from '../../component/header/header.component';
 import { FooterComponent } from '../../component/footer/footer.component';
+import { QRcodeProfilComponent } from '../../component/qrcode-profil/qrcode-profil.component';
 
 @Component({
   selector: 'app-home',
@@ -23,7 +24,8 @@ import { FooterComponent } from '../../component/footer/footer.component';
     MatCardModule,
     NewVisitCardComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    QRcodeProfilComponent
   ],
   styleUrl: './home.component.scss',
 })
@@ -34,25 +36,35 @@ export class HomeComponent {
   defunit = `Neuroépidémiologie Tropicale et Comparée`;
   profession1 = `Maître de Conférence des Universités`;
   profession2 = `Praticien Hospitalier`;
-  poste = `Un nouveau poste?`;
+  poste = `Créer une carte`;
   defpost = `Pas besoin de supprimer votre carte existante`;
   text1poste = `Profitez des espaces vide dans`;
   text2poste = `votre porte carte`;
 
   changePage(route: string){
-    this.router.navigate(['/login']);
+    this.router.navigate([route]);
   }
-
+  
   constructor(public dialog: MatDialog,private router: Router) {}
 
   openDialog(
     enterAnimationDuration: string,
     exitAnimationDuration: string
-  ): void {
+  ){
     this.dialog.open(NewVisitCardComponent, {
       // height: '0vh',
       enterAnimationDuration,
       exitAnimationDuration,
-    });
+    });    
   }
+  openprofil(
+    enterAnimationDuration: string,
+    exitAnimationDuration: string
+  ): void {
+    this.dialog.open(QRcodeProfilComponent, {
+      // height: '0vh',
+      enterAnimationDuration,
+      exitAnimationDuration,
+    });
+}
 }

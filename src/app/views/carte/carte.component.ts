@@ -4,6 +4,9 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatCardModule} from '@angular/material/card';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatButton} from '@angular/material/button';
+import { HeaderComponent } from '../../component/header/header.component';
+import { FooterComponent } from '../../component/footer/footer.component';
+
 
 
 @Component({
@@ -15,6 +18,8 @@ import {MatButton} from '@angular/material/button';
     MatCardModule,
     MatFormFieldModule,
     MatButton,
+    HeaderComponent,
+    FooterComponent,
   ],
   templateUrl: './carte.component.html',
   styleUrl: './carte.component.scss' 
