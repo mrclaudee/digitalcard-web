@@ -4,7 +4,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatCardModule} from '@angular/material/card';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatButton} from '@angular/material/button';
-
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-carte',
@@ -15,10 +15,17 @@ import {MatButton} from '@angular/material/button';
     MatCardModule,
     MatFormFieldModule,
     MatButton,
+    CommonModule,
   ],
   templateUrl: './carte.component.html',
   styleUrl: './carte.component.scss' 
 })
 export class CarteComponent {
+colorUnity = {
+  backgroundColor: "#00ff00",
+  fill: "#00ff00"
+}
+ColorConstante = "#ff00ff"
 
 }
+

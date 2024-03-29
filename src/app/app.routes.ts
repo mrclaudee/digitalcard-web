@@ -4,6 +4,7 @@ import { LoginComponent } from './views/login/login.component';
 import { ProfilComponent } from './views/profil/profil.component';
 import { CarteComponent } from './views/carte/carte.component';
 
+
 export const routes: Routes = [
     {path:'', component: HomeComponent},
     {path:'login', component: LoginComponent},

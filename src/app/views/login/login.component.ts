@@ -12,13 +12,14 @@ import {MatButton} from '@angular/material/button';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [HeaderComponent,FooterComponent],
   imports: [
     MatDividerModule,
     MatToolbarModule,
     MatCardModule,
     MatFormFieldModule,
     MatButton,
+    HeaderComponent,
+    FooterComponent
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
