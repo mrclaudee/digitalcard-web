@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   MatDialogRef,
   MatDialogActions,
@@ -6,7 +6,7 @@ import {
   MatDialogTitle,
   MatDialogContent,
 } from '@angular/material/dialog';
-import {FormControl, Validators, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {FormControl, Validators, FormsModule, ReactiveFormsModule, FormGroup, AbstractControl, FormBuilder} from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
 import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
@@ -22,14 +22,40 @@ import {MatFormFieldModule} from '@angular/material/form-field';
   templateUrl: './new-visit-card.component.html',
   styleUrl: './new-visit-card.component.scss'
 })
-export class NewVisitCardComponent {
-  constructor(public dialogRef: MatDialogRef<NewVisitCardComponent>) {}
-  unitFormControl = new FormControl('', [Validators.required]);
-  functionFormControl = new FormControl('', [Validators.required]);
-  mobileFormControl = new FormControl('', [Validators.required]);
-  fixeFormControl = new FormControl('', [Validators.required]);
-  addressFormControl = new FormControl('', [Validators.required]);
-  postalFormControl = new FormControl('', [Validators.required]);
-  townFormControl = new FormControl('', [Validators.required]);
-  emailFormControl = new FormControl('', [Validators.required, Validators.email]);
+export class NewVisitCardComponent implements OnInit{
+  cardForm: FormGroup= new FormGroup({
+    unitFormControl: new FormControl(''),
+    functionFormControl: new FormControl(''),
+    mobileFormControl: new FormControl(''),
+    fixeFormControl: new FormControl(''),
+    postalFormControl: new FormControl(''),
+    townFormControl: new FormControl(''),
+    emailFormControl: new FormControl(''),
+  });
+  submitted = false;
+  get f(): { [key: string]: AbstractControl } {
+    return this.cardForm.controls;
+  }
+  constructor(public dialogRef: MatDialogRef<NewVisitCardComponent>, private formBuilder: FormBuilder) {
+    this.cardForm = new FormGroup({})    
+  }
+  ngOnInit(){
+    this.cardForm = this.formBuilder.group(
+      {        
+      unitFormControl: ['', [Validators.required]],
+      functionFormControl: ['', [Validators.required]],
+      mobileFormControl: ['', [Validators.required]],
+      fixeFormControl: ['', [Validators.required]],
+      addressFormControl: ['', [Validators.required]],
+      postalFormControl: ['', [Validators.required]],
+      townFormControl: ['', [Validators.required]],
+    
+      },
+    )
+  }
+
+  onSubmit(){
+    console.log(JSON.stringify(this.cardForm.value));
+  }
+  
 }

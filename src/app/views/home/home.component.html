@@ -1,94 +1,96 @@
 <body>
-    <div>
-      <app-header></app-header>        
-      <div class="container justify">
-        <h1>Salut {{ nom }}</h1>
-        <div class="row">          
-          <div class="card">
-            <mat-card class="mat-card">
-              <mat-card-content>
-                <mat-card-title class="mat-card-title">
-                  <h2>
-                    <b>{{ uniterecherche }} </b>
-                  </h2>
-  
-                  FR
-                </mat-card-title>
-                <mat-card-subtitle>
-                  {{ defunit }}
-                </mat-card-subtitle>
-  
-                <p>
-                  {{ profession1 }} <br />
-                  {{ profession2 }}
-                </p>
-                <p>Partagez cette carte avec:</p>
-              </mat-card-content>
-              <mat-card-actions style="gap: 15px">
-                <button
-                  mat-raised-button
-                  style="background-color: #b51621; color: #ffffff; width: 100%"
-                >
-                  QR Code de Contact
-                </button>
-                <button
-                  mat-raised-button
-                  style="background-color: #b51621; color: #ffffff; width: 100%"
-                >
-                  QR Code de Profil
-                </button>
-              </mat-card-actions>
-              <mat-card-actions
-                style="display: flex; justify-content: space-between"
-              >
-                <div>
-                  <button mat-button>Modifier</button>
-                  |
-                  <button mat-button style="color: #b51621">Supprimer</button>
-                </div>
-                <p>98 vues</p>
-              </mat-card-actions>
-            </mat-card>
-          </div>
+  <div>
+    <app-header></app-header>
+    <div class="container justify">
+      <h1>Bonjour {{ nom }}</h1>
+      <div class="row">
+        <div class="card">
+          <mat-card class="mat-card">
+            <mat-card-content>
+              <mat-card-title class="mat-card-title">
+                <h2>
+                  <b>{{ uniterecherche }} </b>
+                </h2>
+                FR
+              </mat-card-title>
+              <mat-card-subtitle>
+                {{ defunit }}
+              </mat-card-subtitle>
 
-          
-          <div class="card">
-            <mat-card class="mat-card">
-              <mat-card-content>
-                <mat-card-title class="mat-card-title">
-                  <h2>
-                    <b>{{ poste }} </b>
-                  </h2>
-                </mat-card-title>
-                <mat-card-subtitle>
-                  {{ defunit }}
-                </mat-card-subtitle>
-  
-                <p>
-                  {{ text1poste }} <br />
-                  {{ text2poste }}
-                </p>
-                <p>Ajouter une carte</p>
-              </mat-card-content>
-              <mat-card-actions style="justify-content: space-between">
-                <button
-                  mat-raised-button
-                  style="background-color: #b51621; color: #ffffff; width: 100%"
-                  (click)="openDialog('0ms', '0ms')"
-                >
-                  +
-                </button>
-              </mat-card-actions>
-              <mat-card-actions>
-                <p>
-                  Il vous reste <b>3 emplacements</b> vide dans votre porte action
-                </p>
-              </mat-card-actions>
-            </mat-card>
-          </div>
+              <p>
+                {{ profession1 }} <br />
+                {{ profession2 }}
+              </p>
+              <p>Partagez cette carte avec:</p>
+            </mat-card-content>
+            <mat-card-actions style="gap: 15px">
+              <button
+                mat-raised-button
+                style="background-color: #b51621; color: #ffffff; width: 100%"
+              >
+                QR Code de Contact
+              </button>
+              <button
+                mat-raised-button
+                style="background-color: #b51621; color: #ffffff; width: 100%"
+                (click)="openprofil('0ms', '0ms')"
+              >
+                QR Code de Profil
+              </button>
+            </mat-card-actions>
+            <mat-card-actions
+              style="display: flex; justify-content: space-between"
+            >
+              <div>
+                <button 
+                (click)="changePage('/carte')"
+                mat-button>Apercu</button>
+                |
+                <button mat-button>Modifier</button>
+                |
+                <button mat-button style="color: #b51621">Supprimer</button>
+              </div>
+              <p>98 vues</p>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+
+        <div class="card">
+          <mat-card class="mat-card">
+            <mat-card-content>
+              <mat-card-title class="mat-card-title">
+                <h2>
+                  <b>{{ poste }} </b>
+                </h2>
+              </mat-card-title>
+              <mat-card-subtitle>
+                {{ defunit }}
+              </mat-card-subtitle>
+
+              <p>
+                {{ text1poste }} <br />
+                {{ text2poste }}
+              </p>
+              <p>Ajouter une carte</p>
+            </mat-card-content>
+            <mat-card-actions style="justify-content: space-between">
+              <button
+                mat-raised-button
+                style="background-color: #b51621; color: #ffffff; width: 100%"
+                (click)="openDialog('0ms', '0ms')"
+              >
+                +
+              </button>
+            </mat-card-actions>
+            <mat-card-actions>
+              <p>
+                Il vous reste <b>3 emplacements</b> vide dans votre porte action
+              </p>
+            </mat-card-actions>
+          </mat-card>
         </div>
       </div>
     </div>
-    <app-footer></app-footer>
-  </body>
-  
+  </div>
+  <app-footer></app-footer>
+</body>
