@@ -11,6 +11,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import axios from 'axios';
 
 
 
@@ -23,6 +24,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
   styleUrl: './new-visit-card.component.scss'
 })
 export class NewVisitCardComponent implements OnInit{
+  apiUrl="http://bariiiph6o.laravel-sail.site:8080/api/v1/login";
   cardForm: FormGroup= new FormGroup({
     unitFormControl: new FormControl(''),
     functionFormControl: new FormControl(''),
@@ -32,7 +34,7 @@ export class NewVisitCardComponent implements OnInit{
     townFormControl: new FormControl(''),
     emailFormControl: new FormControl(''),
   });
-  submitted = false;
+  
   get f(): { [key: string]: AbstractControl } {
     return this.cardForm.controls;
   }
@@ -54,8 +56,18 @@ export class NewVisitCardComponent implements OnInit{
     )
   }
 
-  onSubmit(){
-    console.log(JSON.stringify(this.cardForm.value));
+  async onSubmit(){
+    let result= JSON.stringify(this.cardForm.value);
+    await axios.post(this.apiUrl,result,{
+      headers:{
+      "content-type":"application/json"
+      }
+    }).then((res)=>{
+
+    })
+
+    console.log(result);
+
   }
   
 }

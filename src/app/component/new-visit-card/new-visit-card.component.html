@@ -27,7 +27,7 @@
         <mat-label for="mobileFormControl">Mobile </mat-label>
         <input matInput formControlName="mobileFormControl" id="mobileFormControl" />
         <!-- <mat-hint>Sous texte</mat-hint> -->
-        <!-- @if (emailFormControl.hasError('email') && !emailFormControl.hasError('required')) {
+        <!-- @if (f['email'].hasError('email') && !email.hasError('required')) {
           <mat-error>Veuillez entrer un mail valide</mat-error>
         } -->
         @if (f['mobileFormControl'].hasError('required')) {
