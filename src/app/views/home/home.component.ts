@@ -11,6 +11,10 @@ import { Router } from '@angular/router';
 import { HeaderComponent } from '../../component/header/header.component';
 import { FooterComponent } from '../../component/footer/footer.component';
 import { QRcodeProfilComponent } from '../../component/qrcode-profil/qrcode-profil.component';
+import { CarteService } from '../../service/carte.service';
+import { JsonPipe } from '@angular/common';
+
+
 
 @Component({
   selector: 'app-home',
@@ -40,12 +44,14 @@ export class HomeComponent {
   defpost = `Pas besoin de supprimer votre carte existante`;
   text1poste = `Profitez des espaces vide dans`;
   text2poste = `votre porte carte`;
+  user: any;
+  userInfo: any;
 
   changePage(route: string){
     this.router.navigate([route]);
   }
   
-  constructor(public dialog: MatDialog,private router: Router) {}
+  constructor(public dialog: MatDialog,private router: Router, private carteService: CarteService) {}
 
   openDialog(
     enterAnimationDuration: string,
@@ -66,5 +72,13 @@ export class HomeComponent {
       enterAnimationDuration,
       exitAnimationDuration,
     });
+}
+
+ngOnInit(){
+  this.user = localStorage.getItem('userInfo');
+  this.userInfo = JSON.parse(this.user);
+  console.log(this.userInfo);
+  
+
 }
 }
