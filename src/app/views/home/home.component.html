@@ -2,57 +2,58 @@
   <div>
     <app-header></app-header>
     <div class="container justify">
-      <h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bonjour {{ nom }}</h1>
+      <h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bonjour {{ userInfo.user.name }}</h1>
       <div class="row">
-        <div class="card">
-          <mat-card class="mat-card">
-            <mat-card-content>
-              <mat-card-title class="mat-card-title">
-                <h2>
-                  <b>{{ uniterecherche }} </b>
-                </h2>
-                FR
-              </mat-card-title>
-              <mat-card-subtitle>
-                {{ defunit }}
-              </mat-card-subtitle>
-
-              <p>
-                {{ profession1 }} <br />
-                {{ profession2 }}
-              </p>
-              <p>Partagez cette carte avec:</p>
-            </mat-card-content>
-            <mat-card-actions style="gap: 15px">
-              <button
-                mat-raised-button
-                style="background-color: #b51621; color: #ffffff; width: 100%"
+        <div *ngFor="let card of listCarte">
+          <div class="card" >
+            <mat-card class="mat-card">
+              <mat-card-content>
+                <mat-card-title class="mat-card-title">
+                  <h2>
+                    <b>{{ card.research_unit[0].acronym }} </b>
+                  </h2>
+                  FR
+                </mat-card-title>
+                <mat-card-subtitle>
+                  {{ card.research_unit[0].title }}
+                </mat-card-subtitle>
+  
+                <p>
+                  {{ card.job_title }} 
+                </p>
+                <p>Partagez cette carte avec:</p>
+              </mat-card-content>
+              <mat-card-actions style="gap: 15px">
+                <button
+                  mat-raised-button
+                  style="background-color: #b51621; color: #ffffff; width: 100%"
+                >
+                  QR Code de Contact
+                </button>
+                <button
+                  mat-raised-button
+                  style="background-color: #b51621; color: #ffffff; width: 100%"
+                  (click)="openprofil('0ms', '0ms')"
+                >
+                  QR Code de Profil
+                </button>
+              </mat-card-actions>
+              <mat-card-actions
+                style="display: flex; justify-content: space-between"
               >
-                QR Code de Contact
-              </button>
-              <button
-                mat-raised-button
-                style="background-color: #b51621; color: #ffffff; width: 100%"
-                (click)="openprofil('0ms', '0ms')"
-              >
-                QR Code de Profil
-              </button>
-            </mat-card-actions>
-            <mat-card-actions
-              style="display: flex; justify-content: space-between"
-            >
-              <div>
-                <button 
-                (click)="changePage('/carte')"
-                mat-button>Apercu</button>
-                |
-                <button mat-button>Modifier</button>
-                |
-                <button mat-button style="color: #b51621">Supprimer</button>
-              </div>
-              <p>98 vues</p>
-            </mat-card-actions>
-          </mat-card>
+                <div>
+                  <button 
+                  (click)="changePage('/carte')"
+                  mat-button>Apercu</button>
+                  |
+                  <button mat-button>Modifier</button>
+                  |
+                  <button mat-button style="color: #b51621">Supprimer</button>
+                </div>
+                <p>{{ card.views }} vues</p>
+              </mat-card-actions>
+            </mat-card>
+          </div>
         </div>
 
         <div class="card">
@@ -64,7 +65,7 @@
                 </h2>
               </mat-card-title>
               <mat-card-subtitle>
-                {{ defunit }}
+                {{ defpost }}
               </mat-card-subtitle>
 
               <p>
@@ -92,5 +93,8 @@
       </div>
     </div>
   </div>
-  <app-footer></app-footer>
+  <div style="background-color: black">
+    <app-footer></app-footer>
+  </div>
+  
 </body>

@@ -4,8 +4,10 @@
     <mat-form-field>
       <mat-label for="unitFormControl">Unite de recherche</mat-label>
       <mat-select formControlName="unitFormControl" id="unitFormControl">
-        <mat-option *ngFor="let unit of ResearchList; let i = index;" value="{{ unit[i].id}}">{{ unit[i].title}}</mat-option>
-       
+        <mat-option> -- None --</mat-option>
+        <mat-option value="0">Neuroepidemiologie tropicale et compare</mat-option>
+        <mat-option value="1">Bacteriologie</mat-option>
+        <mat-option value="2">Medecine</mat-option>
       </mat-select>
       @if (f['unitFormControl'].hasError('required')) {
       <mat-error>L'unite de recherche <strong>est requise</strong></mat-error>

@@ -11,7 +11,10 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { CommonModule } from '@angular/common';
 import axios from 'axios';
+import { UrlService } from '../../classes/url.service';
+import { CarteService } from '../../service/carte.service';
 
 
 
@@ -19,12 +22,12 @@ import axios from 'axios';
   selector: 'new-visit-card',
   standalone: true,
   imports: [MatButtonModule, MatDialogActions, MatDialogClose, MatDialogTitle, MatDialogContent,MatFormFieldModule,
-    MatInputModule, MatSelectModule,FormsModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule],
+    MatInputModule, MatSelectModule,FormsModule, MatFormFieldModule, MatInputModule, CommonModule, ReactiveFormsModule],
   templateUrl: './new-visit-card.component.html',
   styleUrl: './new-visit-card.component.scss'
 })
 export class NewVisitCardComponent implements OnInit{
-  apiUrl="http://bariiiph6o.laravel-sail.site:8080/api/v1/login";
+  
   cardForm: FormGroup= new FormGroup({
     unitFormControl: new FormControl(''),
     functionFormControl: new FormControl(''),
@@ -34,11 +37,12 @@ export class NewVisitCardComponent implements OnInit{
     townFormControl: new FormControl(''),
     emailFormControl: new FormControl(''),
   });
+  ResearchList: any[]=[] ;
   
   get f(): { [key: string]: AbstractControl } {
     return this.cardForm.controls;
   }
-  constructor(public dialogRef: MatDialogRef<NewVisitCardComponent>, private formBuilder: FormBuilder) {
+  constructor(public dialogRef: MatDialogRef<NewVisitCardComponent>, private formBuilder: FormBuilder,private carteService: CarteService) {
     this.cardForm = new FormGroup({})    
   }
   ngOnInit(){
@@ -58,7 +62,7 @@ export class NewVisitCardComponent implements OnInit{
 
   async onSubmit(){
     let result= JSON.stringify(this.cardForm.value);
-    await axios.post(this.apiUrl,result,{
+    await axios.post(UrlService.API_URL + '/cards',result,{
       headers:{
       "content-type":"application/json"
       }
@@ -68,6 +72,15 @@ export class NewVisitCardComponent implements OnInit{
 
     console.log(result);
 
+  }
+
+  unitResearchList(){
+    this.carteService.getSearchUnit().then((res)=>{
+      this.ResearchList = res.data.data;
+      console.log(this.ResearchList[0])    
+    }).catch((error)=>{
+      console.log(error);
+    })
   }
   
 }

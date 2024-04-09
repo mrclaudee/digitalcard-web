@@ -12,19 +12,19 @@ export class CarteService {
   getlisteCarte(token : any){
     return axios.get(UrlService.API_URL + '/cards',{
       headers:{
-        'Authorisation': 'Bearer ' + token,
+        'Authorization': 'Bearer ' + token,
       }
     })
   }
   
   getSearchUnit(){
-    return axios.get(UrlService.API_URL + '/researchs-units')
+    return axios.get(UrlService.API_URL + '/research-units')
   }
 
   getCardById(id : any, token : any){
     return axios.get(UrlService.API_URL + '/cards/' + id,{
       headers:{
-        'Authorisation': 'Bearer ' + token,
+        'Authorization': 'Bearer ' + token,
       }
     })
   }
@@ -32,7 +32,7 @@ export class CarteService {
   deleteCard(id : any, token : any){
     return axios.delete(UrlService.API_URL + '/cards/' + id,{
       headers:{
-        'Authorisation': 'Bearer ' + token,
+        'Authorization': 'Bearer ' + token,
       }
     })
   }

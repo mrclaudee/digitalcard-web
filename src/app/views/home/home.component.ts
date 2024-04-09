@@ -13,6 +13,7 @@ import { FooterComponent } from '../../component/footer/footer.component';
 import { QRcodeProfilComponent } from '../../component/qrcode-profil/qrcode-profil.component';
 import { CarteService } from '../../service/carte.service';
 import { JsonPipe } from '@angular/common';
+import { CommonModule } from '@angular/common';
 
 
 
@@ -29,23 +30,22 @@ import { JsonPipe } from '@angular/common';
     NewVisitCardComponent,
     HeaderComponent,
     FooterComponent,
+    CommonModule,
     QRcodeProfilComponent
   ],
   styleUrl: './home.component.scss',
 })
 
 export class HomeComponent {
-  nom = `Pierre Durant`;
-  uniterecherche = `NETEC`;
-  defunit = `Neuroépidémiologie Tropicale et Comparée`;
-  profession1 = `Maître de Conférence des Universités`;
-  profession2 = `Praticien Hospitalier`;
+  
   poste = `Créer une carte`;
   defpost = `Pas besoin de supprimer votre carte existante`;
   text1poste = `Profitez des espaces vide dans`;
   text2poste = `votre porte carte`;
   user: any;
   userInfo: any;
+  listCarte: any;
+  ResearchList: any[]=[];
 
   changePage(route: string){
     this.router.navigate([route]);
@@ -75,10 +75,32 @@ export class HomeComponent {
 }
 
 ngOnInit(){
-  this.user = localStorage.getItem('userInfo');
+  this.user = localStorage.getItem('userinfo');
   this.userInfo = JSON.parse(this.user);
   console.log(this.userInfo);
+  this.cardList();
+  this.unitResearchList();
   
 
 }
+
+cardList(){
+  this.carteService.getlisteCarte(this.userInfo.authorization.access_token).then((res)=>{
+    this.listCarte = res.data.data;
+    console.log(this.listCarte);    
+  }).catch((error)=>{
+    console.log(error);
+  })
+}
+
+unitResearchList(){
+  this.carteService.getSearchUnit().then((res)=>{
+    this.ResearchList = res.data.data;
+    console.log(this.ResearchList[2])    
+  }).catch((error)=>{
+    console.log(error);
+  })
+}
+
+
 }
