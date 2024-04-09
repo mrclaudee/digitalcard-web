@@ -5,11 +5,15 @@ import { FooterComponent } from '../../component/footer/footer.component';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatCardModule} from '@angular/material/card';
-import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatButton} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
 import {FormControl, Validators, FormsModule, ReactiveFormsModule, FormGroup, AbstractControl, FormBuilder} from '@angular/forms';
 import axios from 'axios';
 import { Router } from '@angular/router';
+import { UrlService } from '../../classes/url.service';
 
 
 @Component({
@@ -23,6 +27,9 @@ import { Router } from '@angular/router';
     MatButton,
     HeaderComponent,
     FooterComponent,
+    MatIconModule,
+    MatButtonModule,
+    MatInputModule,
     FormsModule, ReactiveFormsModule,
   ],
   templateUrl: './login.component.html',
@@ -30,8 +37,7 @@ import { Router } from '@angular/router';
 })
 
 export class LoginComponent implements OnInit{
-API_URL = 'http://bariiiph6o.laravel-sail.site:8080/api/v1/login'
-
+  hide = true;
   loginForm: FormGroup= new FormGroup({
     email : new FormControl(''),
     password: new FormControl(''),
@@ -56,7 +62,7 @@ API_URL = 'http://bariiiph6o.laravel-sail.site:8080/api/v1/login'
 
    async onSubmit(){
     let result= JSON.stringify(this.loginForm.value);
-  await axios.post(this.API_URL ,result, {
+  await axios.post(UrlService.API_URL +'/login',result, {
     headers:{
       "Content-Type" : 'application/json'
     }

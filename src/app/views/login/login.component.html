@@ -5,41 +5,38 @@
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <div class="containerc">
         <mat-card class="containercard">
-          <mat-card-content></mat-card-content>
+          <mat-card-content>
           <div style="display: flex; flex-direction: column; margin-top: -30px">
-            <mat-form-field>
-              <div style="margin-bottom: 5px">
-                <label for="email">Email</label><br />
-              </div>
-
-              <input formControlName="email" id="email"  />
-              <div *ngIf="loginForm.controls['email'].errors?.['required']" style="color: red;">
-                Ce champ est obligatoire
-            </div>
+            
+            <mat-form-field >
+              <mat-label style="margin-bottom: 5px" for="email">Email</mat-label>
+              <input matInput formControlName="email" id="email" />
+              @if (f['email'].hasError('required')) {
+              <mat-error>L'email <strong>est obligatoire</strong></mat-error>
+              }
             </mat-form-field>
 
-            <mat-form-field>
-              <div
-                style="
-                  display: flex;
-                  flex-direction: row;
-                  justify-content: space-between;
-                  margin-bottom: 5px;
-                "
-              >
-                <label for="password">Password</label><br />
-                <span
-                  ><a href="#" style="color: black"
-                    >Mot de passe oublié ?</a
-                  ></span
-                >
-                <!-- Ajoutez ce lien -->
-              </div>
-              <input FormControlName = "password" id="password" type="password" />
-              <div *ngIf="loginForm.controls['password'].errors?.['required']" style="color: red;">
-                Ce champ est obligatoire
-            </div>
+            <mat-form-field >
+              <mat-label style="margin-bottom: 5px" for="email">passord</mat-label>
+              <input matInput formControlName="password" id="password" />
+              @if (f['password'].hasError('required')) {
+              <mat-error>L'email <strong>est obligatoire</strong></mat-error>
+              }
             </mat-form-field>
+
+            <!-- <mat-form-field>
+              <div  style="display: flex; flex-direction: row; justify-content: space-between; margin-bottom: 5px;">
+                <mat-label for="password">Password</mat-label>
+                <span><a href="#" style="color: black">Mot de passe oublié?</a></span>
+              </div>              
+              <input matInput FormControlName = "password" id="password" [type]="hide ? 'password' : 'text'">
+              <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+              @if (f['password'].hasError('required')) {
+                <mat-error>Le mot de passe <strong>est obligatoire</strong></mat-error>
+                }
+            </mat-form-field> -->
           </div>
           <button
             mat-raised-button
@@ -48,6 +45,7 @@
           >
             Se connecter
           </button>
+        </mat-card-content>
         </mat-card>
       </div>
     </form>
