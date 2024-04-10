@@ -35,22 +35,41 @@ ColorConstante = "#ff00ff"
   userInfo: any;
   user: any ;
   id: any;
+  id1: any;
 QRInfo : any;
+userCard : any;
+  listCarte: any;
 constructor (private carteservice : CarteService){}
 
   ngOnInit() {
-  this.user = localStorage.getItem('userInfo');
+  this.user = localStorage.getItem('userinfo');
   this.userInfo = JSON.parse(this.user);
-this.id = localStorage.getItem("carteId");
-this.InfoCarte();
+  console.log(this.userInfo);
+  this.id = localStorage.getItem('carteId');
+  this.id1 = JSON.parse(this.id);
+  console.log(this.id1);
+
+  this.InfoCarte();
 
   }
 
-  InfoCarte(){
-    this.carteservice.getCardById(this.id,this.userInfo.authorization.access_token).then((res)=> {
-   this.QRInfo=res.data.data
+ async InfoCarte(){
+   await this.carteservice.getCardById(this.id1,this.userInfo.authorization.access_token).then((res)=> {
+      this.QRInfo=res.data.data;
+      console.log(this.QRInfo);
     })
-    }
+  
+  }
+
+  cardList(){
+    this.carteservice.getlisteCarte(this.userInfo.authorization.access_token).then((res)=>{
+      this.listCarte = res.data.data;
+      console.log(this.listCarte);    
+    }).catch((error)=>{
+      console.log(error);
+    })
+  }
+
   }
 
 

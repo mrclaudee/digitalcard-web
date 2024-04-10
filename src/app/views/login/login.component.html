@@ -17,12 +17,28 @@
             </mat-form-field>
 
             <mat-form-field >
-              <mat-label style="margin-bottom: 5px" for="email">passord</mat-label>
-              <input matInput formControlName="password" id="password" />
+              <mat-label style="margin-bottom: 5px" for="email">Password</mat-label>
+              <input matInput formControlName="password" id="password" [type]="hide ? 'password' : 'text'"/>
+              <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
               @if (f['password'].hasError('required')) {
               <mat-error>L'email <strong>est obligatoire</strong></mat-error>
               }
             </mat-form-field>
+
+            <!-- <div  style="display: flex; flex-direction: row; justify-content: space-between; margin-bottom: 5px;">
+              <mat-label for="password">Password</mat-label>
+              <span><a href="#" style="color: black">Mot de passe oublié?</a></span>
+            </div>              
+            <input matInput FormControlName = "password" id="password" [type]="hide ? 'password' : 'text'">
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            @if (f['password'].hasError('required')) {
+              <mat-error>Le mot de passe <strong>est obligatoire</strong></mat-error>
+              }
+          </mat-form-field>  -->
 
             <!-- <mat-form-field>
               <div  style="display: flex; flex-direction: row; justify-content: space-between; margin-bottom: 5px;">
@@ -52,5 +68,5 @@
   </div>
   <div style="background-color: black">
     <app-footer></app-footer>
-  </div>
+  </div>
 </body>

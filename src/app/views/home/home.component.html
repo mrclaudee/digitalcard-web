@@ -27,13 +27,14 @@
                 <button
                   mat-raised-button
                   style="background-color: #b51621; color: #ffffff; width: 100%"
+                  (click)="openprofil('0ms', '0ms', card.id)"
                 >
                   QR Code de Contact
                 </button>
                 <button
                   mat-raised-button
                   style="background-color: #b51621; color: #ffffff; width: 100%"
-                  (click)="openprofil('0ms', '0ms')"
+                  (click)="openprofil('0ms', '0ms', card.id)"
                 >
                   QR Code de Profil
                 </button>
@@ -43,13 +44,14 @@
               >
                 <div>
                   <button 
-                  (click)="changePage('/carte')"
-                  mat-button>Apercu</button>
+                  (click)="changePage(card.id)"
+                  mat-button><mat-icon>visibility</mat-icon></button>
                   |
-                  <button mat-button>Modifier</button>
+                  <button mat-button (click)="openUpdate('0ms', '0ms')" ><mat-icon>create</mat-icon></button>
                   |
-                  <button mat-button style="color: #b51621">Supprimer</button>
+                  <button (click)="deletecard(card.id)" mat-button style="color: #b51621"> <mat-icon>delete_forever</mat-icon></button>
                 </div>
+                
                 <p>{{ card.views }} vues</p>
               </mat-card-actions>
             </mat-card>

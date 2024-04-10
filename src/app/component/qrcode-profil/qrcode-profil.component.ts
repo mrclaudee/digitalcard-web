@@ -4,6 +4,7 @@ import {
   MatDialogTitle,
 } from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
+import { CarteService } from '../../service/carte.service';
 @Component({
   selector: 'app-qrcode-profil',
   standalone: true,
@@ -15,5 +16,36 @@ import {MatButtonModule} from '@angular/material/button';
   styleUrl: './qrcode-profil.component.scss'
 })
 export class QRcodeProfilComponent {
+  userInfo: any;
+  user: any;
+  id: any;
+  id1: any;
+  QRInfo: any;
+  imageUrl: any;
+
+  constructor (private carteservice : CarteService){}
+
+  ngOnInit() {
+  this.user = localStorage.getItem('userinfo');
+  this.userInfo = JSON.parse(this.user);
+  console.log(this.userInfo);
+  this.id = localStorage.getItem('profil');
+  this.id1 = JSON.parse(this.id);
+  console.log(this.id1);
+
+  this.InfoCarte();
+
+  }
+
+ async InfoCarte(){
+   await this.carteservice.getCardById(this.id1,this.userInfo.authorization.access_token).then((res)=> {
+      this.QRInfo=res.data.data;
+      this.imageUrl = this.QRInfo.qr_contact
+
+      console.log(this.QRInfo);
+    })
+  
+  }
+
 
 }

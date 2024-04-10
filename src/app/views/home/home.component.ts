@@ -14,6 +14,7 @@ import { QRcodeProfilComponent } from '../../component/qrcode-profil/qrcode-prof
 import { CarteService } from '../../service/carte.service';
 import { JsonPipe } from '@angular/common';
 import { CommonModule } from '@angular/common';
+import { UpdateVisitCardComponent } from '../../component/update-visit-card/update-visit-card.component';
 
 
 
@@ -42,13 +43,15 @@ export class HomeComponent {
   defpost = `Pas besoin de supprimer votre carte existante`;
   text1poste = `Profitez des espaces vide dans`;
   text2poste = `votre porte carte`;
+  
   user: any;
   userInfo: any;
   listCarte: any;
   ResearchList: any[]=[];
 
-  changePage(route: string){
-    this.router.navigate([route]);
+  changePage(id:any){
+    localStorage.setItem('carteId', id);
+    this.router.navigate(['/carte']);
   }
   
   constructor(public dialog: MatDialog,private router: Router, private carteService: CarteService) {}
@@ -63,15 +66,28 @@ export class HomeComponent {
       exitAnimationDuration,
     });    
   }
-  openprofil(
+  openUpdate(
     enterAnimationDuration: string,
     exitAnimationDuration: string
+  ){
+    this.dialog.open(UpdateVisitCardComponent, {
+      // height: '0vh',
+      enterAnimationDuration,
+      exitAnimationDuration,
+    });    
+  }
+  openprofil(
+    enterAnimationDuration: string,
+    exitAnimationDuration: string,
+    idprofil: any
   ): void {
     this.dialog.open(QRcodeProfilComponent, {
       // height: '0vh',
       enterAnimationDuration,
       exitAnimationDuration,
     });
+    localStorage.setItem('profil', idprofil);
+    this.router.navigate(['/']);
 }
 
 ngOnInit(){
@@ -80,6 +96,7 @@ ngOnInit(){
   console.log(this.userInfo);
   this.cardList();
   this.unitResearchList();
+  // this.deletecard(id);
   
 
 }
@@ -102,5 +119,13 @@ unitResearchList(){
   })
 }
 
-
+deletecard(id:any){
+  this.carteService.deleteCard(id,this.userInfo.authorization.access_token).then((res)=>{
+     window.location.reload();
+     alert("votre carte a été supprimée");
+  }).catch((error)=>{
+    console.log(error);
+  })
 }
+}
+
