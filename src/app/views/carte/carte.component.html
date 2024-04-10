@@ -3,8 +3,8 @@
 <div class="container">
   <div class="card">
     <div style="padding: 20px;">
-        <span style="font-size: 1.7rem; font-weight: 600; padding: 20px">
-            <p>faculté des sciences & techniques</p>
+        <span  *ngFor="let card of listCarte" style="font-size: 1.7rem; font-weight: 600; padding: 20px">
+            <p>{{ card.research_unit[0].title }}</p>
           </span>
           <div
             style="
@@ -202,7 +202,7 @@
           <br />
           <span> {{QRInfo.address}} </span>
           <br>
-          <span>{{QRInfo.zip_code}}{{QRInfo.city}} </span>
+          <span>{{QRInfo.zip_code}} {{QRInfo.city}} </span>
           <br>
           <span style="font-size: 1.1rem; font-weight: 600"> T : </span>
       
@@ -253,4 +253,5 @@
   </div>
   
 </div>
+<br><br><br>
 <app-footer></app-footer>

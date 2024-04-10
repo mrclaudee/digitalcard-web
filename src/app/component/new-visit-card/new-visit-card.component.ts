@@ -15,6 +15,7 @@ import { CommonModule } from '@angular/common';
 import axios from 'axios';
 import { UrlService } from '../../classes/url.service';
 import { CarteService } from '../../service/carte.service';
+import { Router } from '@angular/router';
 
 
 
@@ -29,50 +30,60 @@ import { CarteService } from '../../service/carte.service';
 export class NewVisitCardComponent implements OnInit{
   
   cardForm: FormGroup= new FormGroup({
-    unitFormControl: new FormControl(''),
-    functionFormControl: new FormControl(''),
-    mobileFormControl: new FormControl(''),
-    fixeFormControl: new FormControl(''),
-    postalFormControl: new FormControl(''),
-    townFormControl: new FormControl(''),
+    research_unit_id: new FormControl(''),
+    job_title: new FormControl(''),
+    mobile: new FormControl(''),
+    fix: new FormControl(''),
+    zip_code: new FormControl(''),
+    city: new FormControl(''),
     emailFormControl: new FormControl(''),
   });
   ResearchList: any[]=[] ;
+  userInfo: any;
+  user: any;
   
   get f(): { [key: string]: AbstractControl } {
     return this.cardForm.controls;
   }
-  constructor(public dialogRef: MatDialogRef<NewVisitCardComponent>, private formBuilder: FormBuilder,private carteService: CarteService) {
+  constructor(public dialogRef: MatDialogRef<NewVisitCardComponent>,private router:Router, private formBuilder: FormBuilder,private carteService: CarteService) {
     this.cardForm = new FormGroup({})    
   }
   ngOnInit(){
+    this.user = localStorage.getItem('userinfo');
+  this.userInfo = JSON.parse(this.user);
+  console.log(this.userInfo);
     this.cardForm = this.formBuilder.group(
       {        
-      unitFormControl: ['', [Validators.required]],
-      functionFormControl: ['', [Validators.required]],
-      mobileFormControl: ['', [Validators.required]],
-      fixeFormControl: ['', [Validators.required]],
-      addressFormControl: ['', [Validators.required]],
-      postalFormControl: ['', [Validators.required]],
-      townFormControl: ['', [Validators.required]],
-    
+      research_unit_id: ['', [Validators.required]],
+      job_title: ['', [Validators.required]],
+      mobile: ['', [Validators.required]],
+      fix: ['', [Validators.required]],
+      address: ['', [Validators.required]],
+      zip_code: ['', [Validators.required]],
+      city: ['', [Validators.required]],
+      description: ['']
       },
     )
+    this.unitResearchList();
   }
 
   async onSubmit(){
     let result= JSON.stringify(this.cardForm.value);
     await axios.post(UrlService.API_URL + '/cards',result,{
       headers:{
-      "content-type":"application/json"
+        'Authorization': 'Bearer ' + this.userInfo.authorization.access_token,
+        "Content-Type" : 'application/json'
       }
     }).then((res)=>{
-
+      window.location.reload();
+      this.router.navigate(['/'])
     })
 
     console.log(result);
 
   }
+  
+  
 
   unitResearchList(){
     this.carteService.getSearchUnit().then((res)=>{

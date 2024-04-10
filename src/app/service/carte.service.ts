@@ -27,6 +27,8 @@ export class CarteService {
         'Authorization': 'Bearer ' + token,
       }
     })
+
+    
   }
 
   deleteCard(id : any, token : any){
@@ -37,4 +39,4 @@ export class CarteService {
     })
   }
 
-}
+ }
