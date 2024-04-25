@@ -53,29 +53,34 @@ userCard : any;
   constructor(public dialogRef: MatDialogRef<UpdateVisitCardComponent>,private router:Router, private formBuilder: FormBuilder,private carteService: CarteService) {
     this.cardForm = new FormGroup({})    
   }
-  ngOnInit(){
-    this.user = localStorage.getItem('userinfo');
-  this.userInfo = JSON.parse(this.user);
-  console.log(this.userInfo);
-  this.id = localStorage.getItem('carteId');
-  this.id1 = JSON.parse(this.id);
-  console.log(this.id1);
+  async ngOnInit(){
 
-  
+    this.user = localStorage.getItem('userinfo');
+    this.userInfo = JSON.parse(this.user);
+    console.log(this.userInfo);
+    this.id = localStorage.getItem('carteId');
+    this.id1 = JSON.parse(this.id);
+    console.log(this.id1);
+    // Charger les data pour le formulaire
+    await this.InfoCarte();
+    this.unitResearchList();
+    console.log("Unit : " + Object.keys(this.QRInfo.research_unit[0].id));
+
+  // Changement des valeurs par défauts du formulaire
     this.cardForm = this.formBuilder.group(
       {        
-      research_unit_id: ['', [Validators.required]],
-      job_title: ['', [Validators.required]],
-      mobile: ['', [Validators.required]],
-      fix: ['', [Validators.required]],
-      address: ['', [Validators.required]],
-      zip_code: ['', [Validators.required]],
-      city: ['', [Validators.required]],
-      description: ['']
+      research_unit_id: [this.QRInfo.research_unit[0].id, [Validators.required]],
+      job_title: [this.QRInfo.job_title, [Validators.required]],
+      mobile: [this.QRInfo.mobile, [Validators.required]],
+      fix: [this.QRInfo.fix, [Validators.required]],
+      address: [this.QRInfo.address, [Validators.required]],
+      zip_code: [this.QRInfo.zip_code, [Validators.required]],
+      city: [this.QRInfo.city, [Validators.required]],
+      description: [this.QRInfo.description]
       },
     )
-    this.unitResearchList();
-    this.InfoCarte();
+    
+    
   }
 
   async onSubmit(){
@@ -95,14 +100,15 @@ userCard : any;
   async InfoCarte(){
     await this.carteService.getCardById(this.id1,this.userInfo.authorization.access_token).then((res)=> {
        this.QRInfo=res.data.data;
-       console.log(this.QRInfo);
+       console.log("Update" + this.QRInfo);
      })
-   
-   }
+     
+  }
 
   async update(){
     let result= JSON.stringify(this.cardForm.value);
-    await axios.put(UrlService.API_URL + '/cards',result,{
+    // Ajout de l'id de la carte à modifier
+    await axios.put(UrlService.API_URL + '/cards/' + this.id1 ,result,{
       headers:{
         'Authorization': 'Bearer ' + this.userInfo.authorization.access_token,
         "Content-Type" : 'application/json'

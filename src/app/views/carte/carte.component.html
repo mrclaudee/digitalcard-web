@@ -1,5 +1,3 @@
-<app-header></app-header>
-
 <div class="container">
   <div class="card">
     <div style="padding: 20px;">
@@ -96,7 +94,7 @@
           </div>
           <br />
       
-          <span style="font-size: 1.5rem; font-weight: 600"> {{userInfo.user.name}}</span>
+          <span style="font-size: 1.5rem; font-weight: 600"> {{QRInfo.user[0].name}}</span>
           <br />
           <span> {{QRInfo.job_title}} </span>
       
@@ -197,7 +195,7 @@
           <br />
           <span style="font-size: 1.1rem; font-weight: 600"> C : </span>
       
-          <span> {{userInfo.user.email}} </span>
+          <span> {{QRInfo.user[0].email}} </span>
           <br />
           <br />
           <span> {{QRInfo.address}} </span>
@@ -211,6 +209,11 @@
           <span style="font-size: 1.1rem; font-weight: 600"> F : </span>
       
           <span> {{QRInfo.fix}} </span>
+
+          <br /><br /><br />
+          <span style="font-size: 1.1rem; font-weight: 600"> Description : </span><br />
+      
+          <span> {{QRInfo.description}} </span>
     </div>
     <br>
     <br>
@@ -253,5 +256,4 @@
   </div>
   
 </div>
-<br><br><br>
-<app-footer></app-footer>
+<br><br><br>  

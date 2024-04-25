@@ -15,6 +15,7 @@ import { CarteService } from '../../service/carte.service';
 import { JsonPipe } from '@angular/common';
 import { CommonModule } from '@angular/common';
 import { UpdateVisitCardComponent } from '../../component/update-visit-card/update-visit-card.component';
+import { QRcodeContactComponent } from '../../qrcode-contact/qrcode-contact.component';
 
 
 
@@ -43,6 +44,9 @@ export class HomeComponent {
   defpost = `Pas besoin de supprimer votre carte existante`;
   text1poste = `Profitez des espaces vide dans`;
   text2poste = `votre porte carte`;
+
+  // Nombre de carte max
+  availableCardsNumber = 4;
   
   user: any;
   userInfo: any;
@@ -50,8 +54,7 @@ export class HomeComponent {
   ResearchList: any[]=[];
 
   changePage(id:any){
-    localStorage.setItem('carteId', id);
-    this.router.navigate(['/carte']);
+    this.router.navigate(['/cards', id]);
   }
   
   constructor(public dialog: MatDialog,private router: Router, private carteService: CarteService) {}
@@ -68,8 +71,11 @@ export class HomeComponent {
   }
   openUpdate(
     enterAnimationDuration: string,
-    exitAnimationDuration: string
+    exitAnimationDuration: string,
+    cardId: number
   ){
+    localStorage.removeItem('carteId');
+    localStorage.setItem('carteId', JSON.stringify(cardId));
     this.dialog.open(UpdateVisitCardComponent, {
       // height: '0vh',
       enterAnimationDuration,
@@ -88,7 +94,21 @@ export class HomeComponent {
     });
     localStorage.setItem('profil', idprofil);
     this.router.navigate(['/']);
-}
+  }
+
+  opencontact(
+    enterAnimationDuration: string,
+    exitAnimationDuration: string,
+    idprofil: any
+  ): void {
+    this.dialog.open(QRcodeContactComponent, {
+      // height: '0vh',
+      enterAnimationDuration,
+      exitAnimationDuration,
+    });
+    localStorage.setItem('profil', idprofil);
+    this.router.navigate(['/']);
+  }
 
 ngOnInit(){
   this.user = localStorage.getItem('userinfo');
@@ -97,13 +117,14 @@ ngOnInit(){
   this.cardList();
   this.unitResearchList();
   // this.deletecard(id);
-  
 
 }
 
 cardList(){
   this.carteService.getlisteCarte(this.userInfo.authorization.access_token).then((res)=>{
     this.listCarte = res.data.data;
+    // Mise à jour du nombre de cartes restantes
+    this.availableCardsNumber = this.availableCardsNumber - this.listCarte.length;
     console.log(this.listCarte);    
   }).catch((error)=>{
     console.log(error);

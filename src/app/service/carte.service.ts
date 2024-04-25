@@ -27,8 +27,10 @@ export class CarteService {
         'Authorization': 'Bearer ' + token,
       }
     })
+  }
 
-    
+  getCard(id : any){
+    return axios.get(UrlService.API_URL + '/cards/' + id)
   }
 
   deleteCard(id : any, token : any){

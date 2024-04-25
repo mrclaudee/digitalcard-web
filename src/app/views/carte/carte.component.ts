@@ -8,6 +8,7 @@ import { HeaderComponent } from '../../component/header/header.component';
 import { FooterComponent } from '../../component/footer/footer.component';
 import { CommonModule } from '@angular/common';
 import { CarteService } from '../../service/carte.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-carte',
@@ -34,27 +35,25 @@ colorUnity = {
 ColorConstante = "#ff00ff"
   userInfo: any;
   user: any ;
-  id: any;
   id1: any;
 QRInfo : any;
 userCard : any;
   listCarte: any;
-constructor (private carteservice : CarteService){}
+constructor (private carteservice : CarteService, private route: ActivatedRoute){
+  this.route.params.subscribe(params => {
+    this.id1 = params['id'];
+  })
+}
 
-  ngOnInit() {
-  this.user = localStorage.getItem('userinfo');
-  this.userInfo = JSON.parse(this.user);
-  console.log(this.userInfo);
-  this.id = localStorage.getItem('carteId');
-  this.id1 = JSON.parse(this.id);
-  console.log(this.id1);
+  async ngOnInit() {
+  console.log("Id carte " + this.id1);
 
-  this.InfoCarte();
+  await this.InfoCarte();
 
   }
 
  async InfoCarte(){
-   await this.carteservice.getCardById(this.id1,this.userInfo.authorization.access_token).then((res)=> {
+   await this.carteservice.getCard(this.id1).then((res)=> {
       this.QRInfo=res.data.data;
       console.log(this.QRInfo);
     })

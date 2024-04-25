@@ -4,11 +4,12 @@
 
     <mat-form-field>
       <mat-label for="research_unit_id" >Unité de recherche</mat-label>
-      <mat-select formControlName="research_unit_id" id="research_unit_id">
-      @for (unit of ResearchList; track unit){
-        <mat-option selected *ngFor="let card of listCarte" >{{ card.research_unit[0].title }}</mat-option>
-        <mat-option  [value]="unit.id">{{ unit.title }}</mat-option>
-      }              
+      <!-- On récupère l'élément depuis le .ts et on l'ajoute comme valeur par défaut du select -->
+      <mat-select formControlName="research_unit_id" [value]="QRInfo.research_unit[0].id" id="research_unit_id">
+
+        @for (unit of ResearchList; track unit){
+          <mat-option [value]="unit.id">{{ unit.title }}</mat-option>
+        }              
       </mat-select>      
       @if (f['research_unit_id'].hasError('required')) {
       <mat-error>L'unite de recherche <strong>est requise</strong></mat-error>
@@ -26,7 +27,7 @@
     <div class="row">
       <mat-form-field class="example-full-width">
         <mat-label for="mobile">Mobile </mat-label>
-        <input matInput formControlName="mobile" id="mobile" placeholder="{{QRInfo.mobile}}" />
+        <input matInput formControlName="mobile" id="mobile" value="{{QRInfo.mobile}}" />
         <!-- <mat-hint>Sous texte</mat-hint> -->
         <!-- @if (f['email'].hasError('email') && !email.hasError('required')) {
           <mat-error>Veuillez entrer un mail valide</mat-error>
@@ -69,10 +70,12 @@
       </mat-form-field>
     </div>
 
-    <mat-form-field class="example-full-width">
+    
+    <!-- <mat-form-field class="example-full-width">
       <mat-label for="logo">Logo</mat-label>
       <input matInput id="logo" placeholder="{{QRInfo.logo}}" />
-    </mat-form-field>
+    </mat-form-field> -->
+    
 
     <mat-form-field class="">
       <mat-label for="description">Desription</mat-label>

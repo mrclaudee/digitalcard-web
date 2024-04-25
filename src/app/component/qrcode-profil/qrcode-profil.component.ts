@@ -38,11 +38,11 @@ export class QRcodeProfilComponent {
   }
 
  async InfoCarte(){
-   await this.carteservice.getCardById(this.id1,this.userInfo.authorization.access_token).then((res)=> {
+   await this.carteservice.getCard(this.id1).then((res)=> {
       this.QRInfo=res.data.data;
-      this.imageUrl = this.QRInfo.qr_contact
+      this.imageUrl = this.QRInfo.qr_profil
 
-      console.log(this.QRInfo);
+      console.log("URL QR Profil - " + this.imageUrl);
     })
   
   }
